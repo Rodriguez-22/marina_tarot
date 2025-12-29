@@ -1,85 +1,62 @@
-// app/components/Header.tsx
 "use client";
 
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const isActive = (path: string) => pathname === path ? 'active-link' : '';
 
   return (
     <header className="main-header">
-
-      {/* 1. Logo (Izquierda) - CÓDIGO RESTAURADO */}
-      <div className="logo">
+      {/* 1. Lado Izquierdo: Logo */}
+      <div className="header-left">
         <Link href="/" onClick={closeMenu}>
           <Image
             src="/logo.webp"
             alt="MARINA TAROT Logo"
-            width={120} // Un poco más pequeño suele quedar mejor
+            width={120}
             height={120}
-            style={{ objectFit: 'contain' }}
             className="logo-image"
             priority
           />
         </Link>
       </div>
 
-      {/* 2. Botón de Hamburguesa */}
-      <button
-        className="hamburger-menu-button"
-        onClick={toggleMenu}
-        aria-expanded={isMenuOpen}
-        aria-label="Toggle navigation menu"
-      >
-        <i className={isMenuOpen ? "fa-solid fa-times" : "fa-solid fa-bars"}></i>
-      </button>
+      {/* 2. Centro: Navegación */}
+      <nav className={`main-nav ${isMenuOpen ? 'menu-open' : ''}`}>
+        <ul className="nav-list">
+          <li><Link href="/" className={isActive('/')} onClick={closeMenu}>Inicio</Link></li>
+          <li><Link href="/sobre-mi" className={isActive('/sobre-mi')} onClick={closeMenu}>Sobre mi</Link></li>
+          <li><Link href="/servicios" className={isActive('/servicios')} onClick={closeMenu}>Servicios</Link></li>
+          <li><Link href="/contacto" className={isActive('/contacto')} onClick={closeMenu}>Contacto</Link></li>
+        </ul>
+      </nav>
 
-      {/* 3. Contenedor Responsivo para todo el contenido de la derecha */}
-      <div className={`nav-right-container ${isMenuOpen ? 'menu-open' : ''}`}>
-
-        {/* 3a. Navegación (Centro) */}
-        <nav className="main-nav">
-          <ul className="nav-list">
-            <li><Link href="/" onClick={closeMenu}>Inicio</Link></li>
-            <li><Link href="/sobre-mi" onClick={closeMenu}>Sobre mi</Link></li>
-            <li><Link href="/servicios" onClick={closeMenu}>Servicios</Link></li>
-            <li><Link href="/contacto" onClick={closeMenu}>Contacto</Link></li>
-          </ul>
-        </nav>
-
-        {/* 3b. Íconos y CTA (Derecha) */}
-        <div className="header-right-group">
-
-          <div className="social-icons">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <i className="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <i className="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <i className="fa-brands fa-tiktok"></i>
-            </a>
-          </div>
-
-          <Link href="/contacto" className="cta-button" onClick={closeMenu}>
-            ¡¿HABLAMOS?!
-          </Link>
+      {/* 3. Lado Derecho: Social + Botón */}
+      <div className="header-right">
+        <div className="social-icons">
+          <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-tiktok"></i></a>
         </div>
+        
+        <Link href="/contacto" className="cta-button" onClick={closeMenu}>
+          ¡¿HABLAMOS?!
+        </Link>
 
+        {/* Botón hamburguesa solo para móvil */}
+        <button className="hamburger-menu-button" onClick={toggleMenu}>
+          <i className={isMenuOpen ? "fa-solid fa-times" : "fa-solid fa-bars"}></i>
+        </button>
       </div>
-
     </header>
   );
 }
