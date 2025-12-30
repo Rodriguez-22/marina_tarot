@@ -889,22 +889,53 @@ main {
 
 /* === REFUERZO DE LA GRILLA 2x2 PARA ESCRITORIO (CSS Puro) === */
 @media (max-width: 768px) {
+  /* 1. Asegurar que el contenedor principal crezca con el contenido */
   .scheduler-widget-custom {
     grid-template-columns: 1fr !important;
-    padding: 15px; /* Bajamos un poco el padding para ganar espacio */
+    height: auto !important; /* Permite que el contenedor se alargue */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Si la pantalla es menor a 480px (móviles verticales), mejor 1 sola columna de horas */
+  /* 2. Arreglar los nombres de los días (Lun Mar Mié...) */
+  /* Asumiendo que están en un contenedor llamado .calendar-header o similar */
+  .calendar-weekdays-container, 
+  .custom-calendar-header-days { 
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Crea 7 columnas iguales */
+    text-align: center;
+    gap: 2px;
+    margin-bottom: 10px;
+  }
+
+  /* 3. Evitar que las horas se salgan del cuadro */
+  .booking-form {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
   .time-slots {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* Mantiene 2 columnas */
     gap: 10px;
+    padding: 10px 0;
   }
 
+  /* 4. Ajustar botones de hora para que no sean tan altos */
+  .time-slot-button { /* Cambia esto por la clase de tus botones de hora */
+    padding: 12px 5px !important;
+    font-size: 0.9rem;
+    height: auto !important;
+  }
+
+  /* 5. Días del calendario */
   .custom-calendar-day {
-    height: auto; /* Permitimos que crezca si es necesario */
-    min-height: 48px; /* Aseguramos que sea fácil de tocar */
-    aspect-ratio: 1 / 1; /* Mantiene los días cuadrados, se ve más limpio */
-    padding: 5px;
+    height: 40px; /* Reducimos un poco para que quepan todos en pantalla */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
