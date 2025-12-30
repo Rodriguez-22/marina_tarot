@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     // Se añade la variable CSS de la fuente Serif al <html>
     <html lang="es" className={playfair.variable}> 
-      <body className={poppins.className}> {/* ⬅️ DEBE USAR poppins.className */}
+      <body className="bg-[#0a0a0a]"> {/* ⬅️ DEBE USAR poppins.className */}
         <Header /> 
         <main>
           {children}
