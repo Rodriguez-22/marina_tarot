@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"); 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
 
 @tailwind base;
 @tailwind components;
@@ -6,195 +6,205 @@
 
 /* === VARIABLES DE COLOR (Sintaxis Limpia) === */
 :root {
-    --color-fondo: #0a0a0a;
-    --color-fondo-modulo: #1f1f1f;
-    --color-morado-principal: #a855f7;
-    /* Color de acento para el formulario/enlaces (No usar para CTA) */
-    --color-verde: #1ED760; 
-    /* Botón de acción final (WhatsApp) */
-    --color-texto: #FFFFFF;
-    --color-texto-secundario: #AAAAAA;
-    --color-borde: #333333;
-    --color-borde-morado: #a855f750;
+  --color-fondo: #0a0a0a;
+  --color-fondo-modulo: #1f1f1f;
+  --color-morado-principal: #a855f7;
+  /* Color de acento para el formulario/enlaces (No usar para CTA) */
+  --color-verde: #1ED760;
+  /* Botón de acción final (WhatsApp) */
+  --color-texto: #FFFFFF;
+  --color-texto-secundario: #AAAAAA;
+  --color-borde: #333333;
+  --color-borde-morado: #a855f750;
 
-    /* Variables de Gris Neutro para Calendario/Horas */
-    --color-gris-claro: #A0A0A0;
-    --color-gris-interaccion: #555555;
-    --color-gris-oscuro: #2D2D2D;
-    --color-gris-seleccion: #444444;
+  /* Variables de Gris Neutro para Calendario/Horas */
+  --color-gris-claro: #A0A0A0;
+  --color-gris-interaccion: #555555;
+  --color-gris-oscuro: #2D2D2D;
+  --color-gris-seleccion: #444444;
 
-    /* === VARIABLES DE TIPOGRAFÍA AÑADIDAS (Corregido) === */
-    --font-heading: var(--font-playfair); /* Playfair Display para títulos */
-    --font-body: Poppins, sans-serif; /* Poppins para cuerpo */
+  /* === VARIABLES DE TIPOGRAFÍA AÑADIDAS (Corregido) === */
+  --font-heading: var(--font-playfair);
+  /* Playfair Display para títulos */
+  --font-body: Poppins, sans-serif;
+  /* Poppins para cuerpo */
 }
 
 /* === REGLAS GENERALES Y TIPOGRAFÍA DE TÍTULOS === */
 .intro-spacing {
-    /* Espacio entre el texto introductorio y el primer módulo */
-    margin-bottom: 48px !important; 
+  /* Espacio entre el texto introductorio y el primer módulo */
+  margin-bottom: 48px !important;
 }
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    font-family: var(--font-body); /* ⬅️ Usa la variable de cuerpo (Poppins) */
-    line-height: 1.6;
+  /*background-color: var(--color-fondo);*/
+  background-color: transparent;
+  color: var(--color-texto);
+  font-family: var(--font-body);
+  /* ⬅️ Usa la variable de cuerpo (Poppins) */
+  line-height: 1.6;
+}
+
+main:not(.bg-white) {
+  background-color: var(--color-fondo);
 }
 
 /* TÍTULOS PRINCIPALES: Aplicar tipografía Serif */
 .booking-section h1,
 .booking-section h2,
 .service-category-title {
-    font-family: var(--font-heading); /* ⬅️ Aplicamos Serif (Playfair Display) */
-    font-weight: 900; 
+  font-family: var(--font-heading);
+  /* ⬅️ Aplicamos Serif (Playfair Display) */
+  font-weight: 900;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 button {
-    font-family: inherit;
-    cursor: pointer;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 /* ... (código del Header, se mantiene) ... */
 
 /* 1. CONTENEDOR PRINCIPAL: Distribución Flex en 3 partes */
 header.main-header {
-    display: flex;
-    justify-content: space-between;
-    /* Espacio entre Logo, Navegación y Grupo Derecho */
-    align-items: center;
-    padding: 0 40px;
-    background-color: var(--color-fondo);
-    border-bottom: 1px solid var(--color-borde);
-    height: 90px;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* Espacio entre Logo, Navegación y Grupo Derecho */
+  align-items: center;
+  padding: 0 40px;
+  background-color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-borde);
+  height: 90px;
+  position: relative;
 }
 
 /* 2. LOGO */
 .logo {
-    width: 150px;
+  width: 150px;
 }
 
 .logo-image {
-    height: 150px;
-    /* Altura ajustada */
-    width: auto;
-    display: block;
+  height: 150px;
+  /* Altura ajustada */
+  width: auto;
+  display: block;
 }
 
 /* 3. CONTENEDOR RESPONSIVO: En escritorio, sus hijos se distribuyen en el header */
 .nav-right-container {
-    /* En escritorio, se comporta como si sus hijos fueran directos del header */
-    display: contents;
+  /* En escritorio, se comporta como si sus hijos fueran directos del header */
+  display: contents;
 }
 
 /* 3a. NAVEGACIÓN (Centro) */
 .main-nav {
-    flex-grow: 1;
-    /* Ocupa todo el espacio central restante */
-    display: flex;
-    justify-content: center;
-    /* Centra la lista de enlaces */
+  flex-grow: 1;
+  /* Ocupa todo el espacio central restante */
+  display: flex;
+  justify-content: center;
+  /* Centra la lista de enlaces */
 }
 
 /* Menú de Navegación */
 .main-nav ul {
-    display: flex;
-    gap: 30px;
-    padding: 0;
-    /* Aseguramos que no haya padding/margin extra */
-    margin: 0;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  /* Aseguramos que no haya padding/margin extra */
+  margin: 0;
 }
 
 .main-nav a {
-    /* 1. Definimos el color base de TODOS los enlaces como BLANCO */
-    color: var(--color-texto);
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 5px 0;
-    transition: color 0.3s ease;
+  /* 1. Definimos el color base de TODOS los enlaces como BLANCO */
+  color: var(--color-texto);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 0;
+  transition: color 0.3s ease;
 }
 
 .main-nav a:hover {
-    /* 2. Hover en enlaces normales: Morado */
-    color: var(--color-morado-principal);
+  /* 2. Hover en enlaces normales: Morado */
+  color: var(--color-morado-principal);
 }
 
 .main-nav a.active {
-    /* 3. Forzamos el enlace ACTIVO a ser BLANCO y peso normal */
-    color: var(--color-texto);
-    font-weight: 500;
+  /* 3. Forzamos el enlace ACTIVO a ser BLANCO y peso normal */
+  color: var(--color-texto);
+  font-weight: 500;
 }
 
 /* 4. SOLUCIÓN CRÍTICA: Aseguramos que el hover funcione sobre el enlace activo */
 .main-nav a.active:hover {
-    color: var(--color-morado-principal);
+  color: var(--color-morado-principal);
 }
 
 /* 3b. GRUPO DERECHO (Íconos Sociales y CTA) */
 .header-right-group {
-    width: 250px;
-    /* Ancho fijo para no interferir con el centrado del menú */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* Alinea los elementos a la derecha */
-    gap: 20px;
+  width: 250px;
+  /* Ancho fijo para no interferir con el centrado del menú */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* Alinea los elementos a la derecha */
+  gap: 20px;
 }
 
 .social-icons {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 }
 
 .social-icons a {
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-    color: var(--color-texto-secundario);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  color: var(--color-texto-secundario);
 }
 
 .social-icons a:hover {
-    color: var(--color-morado-principal);
+  color: var(--color-morado-principal);
 }
 
 /* Botón CTA */
 .cta-button {
-    /* Estado normal: Fondo transparente, borde y texto blanco */
-    background-color: transparent;
-    border: 2px solid var(--color-texto);
-    color: var(--color-texto);
-    padding: 10px 20px;
-    border-radius: 0;
-    /* Sin bordes redondeados */
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
+  /* Estado normal: Fondo transparente, borde y texto blanco */
+  background-color: transparent;
+  border: 2px solid var(--color-texto);
+  color: var(--color-texto);
+  padding: 10px 20px;
+  border-radius: 0;
+  /* Sin bordes redondeados */
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-    /* ESTA ES LA CORRECCIÓN: Fondo y borde Morado, Texto Blanco */
-    background-color: var(--color-morado-principal);
-    border-color: var(--color-morado-principal);
-    color: var(--color-texto);
+  /* ESTA ES LA CORRECCIÓN: Fondo y borde Morado, Texto Blanco */
+  background-color: var(--color-morado-principal);
+  border-color: var(--color-morado-principal);
+  color: var(--color-texto);
 }
 
 /* Ocultar elementos móviles en escritorio */
 .hamburger-menu-button {
-    display: none;
+  display: none;
 }
 
 
@@ -204,532 +214,583 @@ header.main-header {
 
 @media (max-width: 768px) {
 
-    header.main-header {
-        padding: 15px 20px;
-        height: auto;
-    }
+  header.main-header {
+    padding: 15px 20px;
+    height: auto;
+  }
 
-    /* Mostrar el botón de hamburguesa en móvil */
-    .hamburger-menu-button {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--color-texto);
-        font-size: 1.8rem;
-        cursor: pointer;
-        z-index: 1002;
-        /* Asegurar que esté sobre el menú */
-    }
+  /* Mostrar el botón de hamburguesa en móvil */
+  .hamburger-menu-button {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--color-texto);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1002;
+    /* Asegurar que esté sobre el menú */
+  }
 
-    /* 1. Ocultar en móvil y preparar para menú full-screen (Contenedor Responsivo) */
-    .nav-right-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 50px;
+  /* 1. Ocultar en móvil y preparar para menú full-screen (Contenedor Responsivo) */
+  .nav-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--color-fondo);
-        z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-fondo);
+    z-index: 1001;
 
-        /* Animación: inicia fuera de la pantalla */
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-    }
+    /* Animación: inicia fuera de la pantalla */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
 
-    /* Mostrar el menú cuando esté abierto */
-    .nav-right-container.menu-open {
-        transform: translateX(0);
-    }
+  /* Mostrar el menú cuando esté abierto */
+  .nav-right-container.menu-open {
+    transform: translateX(0);
+  }
 
-    /* 2. Ajustes internos de la navegación móvil */
-    .main-nav {
-        width: 100%;
-        margin-top: 50px;
-        flex-grow: unset;
-    }
+  /* 2. Ajustes internos de la navegación móvil */
+  .main-nav {
+    width: 100%;
+    margin-top: 50px;
+    flex-grow: unset;
+  }
 
-    .main-nav ul {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
+  .main-nav ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
 
-    .main-nav a {
-        font-size: 1.4rem;
-    }
+  .main-nav a {
+    font-size: 1.4rem;
+  }
 
-    /* 3. Ajuste del grupo de íconos/CTA */
-    .header-right-group {
-        width: auto;
-        justify-content: center;
-        flex-direction: column;
-        gap: 30px;
-        margin-top: 30px;
-    }
+  /* 3. Ajuste del grupo de íconos/CTA */
+  .header-right-group {
+    width: auto;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+  }
 
-    .social-icons a {
-        font-size: 1.5rem;
-    }
+  .social-icons a {
+    font-size: 1.5rem;
+  }
 
-    /* ------------------------------------------------ */
-    /* AJUSTES DEL WIDGET (MÓVIL)                       */
-    /* ------------------------------------------------ */
+  /* ------------------------------------------------ */
+  /* AJUSTES DEL WIDGET (MÓVIL)                       */
+  /* ------------------------------------------------ */
 
-    .booking-section h1 {
-        font-size: 2.5rem;
-    }
+  .booking-section h1 {
+    font-size: 2.5rem;
+  }
 
-    /* FUERZA UNA SOLA COLUMNA */
-    .scheduler-widget-custom {
-        grid-template-columns: 1fr !important;
-        /* Añadir !important por si Tailwind lo anula */
-        width: 100%;
-        overflow-x: hidden;
-    }
+  /* FUERZA UNA SOLA COLUMNA */
+  .scheduler-widget-custom {
+    display: grid;
+    /* Proporciones: Calendario más ancho, horas y formulario equilibrados */
+    grid-template-columns: 1.4fr 0.8fr 1fr;
+    gap: 30px;
+    padding: 40px;
+    background-color: #0f0f0f;
+    /* Fondo muy oscuro para resaltar el morado */
+    border-radius: 2rem;
+    border: 1px solid var(--color-morado-principal);
+    /* Borde principal morado */
+    text-align: left;
+    /* Sombra de caja morada intensa */
+    box-shadow: 0 0 60px rgba(168, 85, 247, 0.4);
+  }
 
-    /* FUERZA QUE CADA MÓDULO OCUPE ESA COLUMNA (Anulación de Span 2) */
-    .custom-calendar-container,
-    .timeslot-container-custom,
-    .booking-form,
-    .timeslot-container-custom.placeholder-only {
-        /* Placeholder incluido */
-        grid-column: 1 / -1 !important;
-        /* Ocupa el 100% del ancho */
-        /* Aseguramos que solo ocupen 1 fila si usas grid-row en el desktop */
-        grid-row: auto !important;
-    }
+  /* FUERZA QUE CADA MÓDULO OCUPE ESA COLUMNA (Anulación de Span 2) */
+  .custom-calendar-container,
+  .timeslot-container-custom,
+  .booking-form,
+  .timeslot-container-custom.placeholder-only {
+    /* Placeholder incluido */
+    grid-column: 1 / -1 !important;
+    /* Ocupa el 100% del ancho */
+    /* Aseguramos que solo ocupen 1 fila si usas grid-row en el desktop */
+    grid-row: auto !important;
+  }
 
-    .timeslot-container-custom {
-        max-height: 300px;
-    }
+  .timeslot-container-custom {
+    max-height: 300px;
+  }
 
-    /* SOLUCIÓN PARA CAMPOS INTERNOS (si los tienes en fila) */
-    .booking-form>div {
-        flex-direction: column !important;
-        gap: 0 !important;
-    }
+  /* SOLUCIÓN PARA CAMPOS INTERNOS (si los tienes en fila) */
+  .booking-form>div {
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
 
-    .form-group {
-        width: 100% !important;
-    }
+  .form-group {
+    width: 100% !important;
+  }
 
-    /* SERVICIOS: Forzamos la grilla a ser 1 columna en móvil */
-    .services-grid-container {
-        grid-template-columns: 1fr;
-        /* Eliminamos el padding interno para evitar desbordamiento horizontal 
+  /* SERVICIOS: Forzamos la grilla a ser 1 columna en móvil */
+  .services-grid-container {
+    grid-template-columns: 1fr;
+    /* Eliminamos el padding interno para evitar desbordamiento horizontal 
         y confiamos en el padding 'px-4' del contenedor <section>. */
-        padding-left: 0 !important; 
-        padding-right: 0 !important; 
-    }
-    
-    /* REGLA CRÍTICA PARA EL RESPONSIVE DE SERVICIOS */
-    .service-item p {
-        font-size: 0.9rem !important; /* Reducir fuente a 14.4px para encajar texto largo */
-        line-height: 1.4 !important; /* Reducir altura de línea */
-    }
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 
-    /* Reducir el tamaño del título de categoría en móvil */
-    .service-category-title {
-        font-size: 2rem;
-        margin-bottom: 2rem !important;
-    }
+  /* REGLA CRÍTICA PARA EL RESPONSIVE DE SERVICIOS */
+  .service-item p {
+    font-size: 0.9rem !important;
+    /* Reducir fuente a 14.4px para encajar texto largo */
+    line-height: 1.4 !important;
+    /* Reducir altura de línea */
+  }
 
-    .service-category-title span {
-        font-size: 1.5em;
-    }
+  /* Reducir el tamaño del título de categoría en móvil */
+  .service-category-title {
+    font-size: 2rem;
+    margin-bottom: 2rem !important;
+  }
 
-    /* Reducir el padding de los módulos en móvil */
-    .service-module {
-        padding: 1rem !important; 
-        border-radius: 12px;
-        
-        /* Espacio de 32px (2rem) debajo de cada módulo en móvil */
-        margin-bottom: 32px !important; 
-        
-        margin-left: 0;
-        margin-right: 0;
-        /* Deshabilitamos la altura fija en móvil para que el contenido fluya */
-        min-height: auto !important;
-        overflow-y: visible !important;
-    }
+  .service-category-title span {
+    font-size: 1.5em;
+  }
+
+  /* Reducir el padding de los módulos en móvil */
+  .service-module {
+    padding: 2rem !important;
+    border-radius: 12px;
+
+    /* Espacio de 32px (2rem) debajo de cada módulo en móvil */
+    margin-bottom: 32px !important;
+
+    margin-left: 0;
+    margin-right: 0;
+    /* Deshabilitamos la altura fija en móvil para que el contenido fluya */
+    min-height: auto !important;
+    overflow-y: visible !important;
+  }
 }
 
 
 /* Estilo para los Títulos de la Home Page (Desktop) */
 .hero-title {
-    font-size: 5rem; /* Título principal más grande y dramático */
-    letter-spacing: 2px;
-    margin-bottom: 15px;
+  font-size: 5rem;
+  /* Título principal más grande y dramático */
+  letter-spacing: 2px;
+  margin-bottom: 15px;
 }
+
 @media (max-width: 640px) {
-    .hero-title {
-        font-size: 3rem; 
-    }
+  .hero-title {
+    font-size: 3rem;
+  }
 }
 
 /* ================== SECCIÓN DE INICIO (HERO) ================== */
 .home-content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 80px; /* Margen superior para separarse del header */
-    padding-bottom: 120px;
-    min-height: calc(100vh - 90px); /* Ocupa el resto de la altura */
-    max-width: 900px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+  /* Margen superior para separarse del header */
+  padding-bottom: 120px;
+  min-height: calc(100vh - 90px);
+  /* Ocupa el resto de la altura */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .hero-logo-container {
-    width: 150px; /* Tamaño del logo en el hero */
-    margin-bottom: 30px;
-    /* Efecto de sombra para que el logo morado resalte en el fondo oscuro */
-    filter: drop-shadow(0 0 15px var(--color-morado-principal));
+  width: 150px;
+  /* Tamaño del logo en el hero */
+  margin-bottom: 30px;
+  /* Efecto de sombra para que el logo morado resalte en el fondo oscuro */
+  filter: drop-shadow(0 0 15px var(--color-morado-principal));
 }
 
 .home-content-container h1 {
-    font-size: 4.5rem; /* Título principal grande */
-    font-weight: 800;
-    margin-bottom: 10px;
-    color: var(--color-morado-principal); /* Color de acento */
+  font-size: 4.5rem;
+  /* Título principal grande */
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--color-morado-principal);
+  /* Color de acento */
 }
 
 .home-content-container h2 {
-    font-size: 1.8rem; /* Subtítulo */
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: var(--color-texto);
+  font-size: 1.8rem;
+  /* Subtítulo */
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: var(--color-texto);
 }
 
 .home-content-container p {
-    font-size: 1.2rem;
-    color: var(--color-texto-secundario);
-    max-width: 600px;
-    margin: 0 auto;
+  font-size: 1.2rem;
+  color: var(--color-texto-secundario);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* Regla para separar el CTA del párrafo */
 .home-cta-spacing {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 /* Responsive adjustment for Mobile */
 @media (max-width: 768px) {
-    .home-content-container {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-    
-    .home-content-container h1 {
-        font-size: 3rem; 
-    }
+  .home-content-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 
-    .home-content-container h2 {
-        font-size: 1.2rem; 
-        margin-bottom: 20px;
-    }
+  .home-content-container h1 {
+    font-size: 3rem;
+  }
 
-    .home-content-container p {
-        font-size: 1rem;
-    }
+  .home-content-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .home-content-container p {
+    font-size: 1rem;
+  }
 }
 
 /* ================== SECCIÓN DE RESERVA (WIDGET) ================== */
 main {
-    display: block;
+  display: block;
 }
 
 .booking-section {
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 0 20px;
-    text-align: center;
+  max-width: 1600px;
+  /* Ancho máximo aumentado para escritorio */
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .booking-section h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
 .booking-section p {
-    font-size: 1.1rem;
-    color: var(--color-texto-secundario);
-    max-width: 700px;
-    margin: 0 auto 40px auto;
+  font-size: 1.1rem;
+  color: var(--color-texto-secundario);
+  max-width: 700px;
+  margin: 0 auto 40px auto;
 }
 
 .scheduler-widget-custom {
-    display: grid;
-    /* Mantenemos 3 columnas con ancho igual (1/3 cada una) */
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 24px;
-    background-color: #121212;
-    border-radius: 1rem;
-    /* 16px */
-    border: 1px solid var(--color-borde);
-    text-align: left;
-    box-shadow: 0 0 50px rgba(168, 85, 247, 0.5);
+  display: grid;
+  /* Proporciones: Calendario más ancho, horas y formulario equilibrados */
+  grid-template-columns: 1.4fr 0.8fr 1fr;
+  gap: 30px;
+  padding: 40px;
+  background-color: #0f0f0f;
+  /* Fondo muy oscuro para resaltar el morado */
+  border-radius: 2rem;
+  border: 1px solid var(--color-morado-principal);
+  /* Borde principal morado */
+  text-align: left;
+  /* Sombra de caja morada intensa */
+  box-shadow: 0 0 60px rgba(168, 85, 247, 0.4);
 }
 
 .module-container {
-    padding: 1rem;
-    background-color: var(--color-fondo-modulo);
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-borde-morado);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  background-color: #1a1a1a;
+  /* Fondo de módulos ligeramente más claro */
+  border-radius: 1.5rem;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* --- CALENDARIO: OCUPA 1 COLUMNA --- */
 .custom-calendar-container {
-    width: 100%;
-    grid-column: span 1; /* ⬅️ CORRECCIÓN: 1/3 del ancho */
+  width: 100%;
+  grid-column: span 1;
+  /* ⬅️ CORRECCIÓN: 1/3 del ancho */
 }
 
 .custom-calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 5px;
-    background-color: var(--color-gris-interaccion);
-    border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 5px;
+  background-color: var(--color-gris-interaccion);
+  border-radius: 5px;
 }
 
 .custom-calendar-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: capitalize;
+  height: 65px;
+  /* Días mucho más grandes y fáciles de clicar */
+  font-size: 1.3rem;
+  /* Números más visibles */
+  border-radius: 12px;
 }
 
 .custom-calendar-nav-btn {
-    padding: 8px;
-    background: transparent;
-    border: none;
-    color: var(--color-gris-claro);
-    transition: color 0.3s, background-color 0.3s;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: var(--color-gris-claro);
+  transition: color 0.3s, background-color 0.3s;
 }
 
 .custom-calendar-nav-btn:hover {
-    background-color: #333;
-    color: var(--color-texto);
+  background-color: #333;
+  color: var(--color-texto);
 }
 
 .custom-calendar-weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-texto-secundario);
-    margin-bottom: 5px;
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  /* Días de la semana de lado */
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-morado-principal);
+  /* Nombres de días en morado */
+  margin-bottom: 15px;
+  color: #FFFFFF !important;
+}
+
+.custom-calendar-day.selected,
+.time-slot.selected {
+  color: #ffffff !important;
+  background-color: var(--color-morado-principal) !important;
+}
+
+.custom-calendar-day:disabled,
+.time-slot:disabled,
+.custom-calendar-day.past,
+.time-slot.past-time {
+  color: #555555 !important;
+  background-color: #1a1a1a;
+  cursor: not-allowed;
 }
 
 .custom-calendar-dates {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  /* Fechas en horizontal */
+  gap: 8px;
 }
 
 .custom-calendar-day {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    background-color: var(--color-gris-oscuro);
-    color: var(--color-texto);
-    font-weight: 500;
-    transition: background-color 0.3s, transform 0.1s;
+  height: 60px;
+  /* Tamaño grande para los días */
+  background-color: #262626;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  color: #FFFFFF !important;
 }
 
 .custom-calendar-day:hover:not(:disabled) {
-    background-color: var(--color-gris-interaccion);
-    transform: none;
+  border: 1px solid var(--color-morado-principal);
+  background-color: rgba(168, 85, 247, 0.1);
 }
 
 .custom-calendar-day.past,
 .custom-calendar-day:disabled {
-    background-color: #222;
-    color: #555;
-    cursor: not-allowed;
+  background-color: #222;
+  color: #555;
+  cursor: not-allowed;
 }
 
 .custom-calendar-day.selected {
-    background-color: var(--color-gris-seleccion);
-    color: var(--color-texto);
-    font-weight: 700;
-    box-shadow: none;
+  background-color: var(--color-morado-principal) !important;
+  /* Día seleccionado morado */
+  color: white !important;
+  box-shadow: 0 0 15px var(--color-morado-principal);
 }
 
 .custom-calendar-day.today:not(.selected) {
-    border: 2px solid var(--color-gris-claro);
-    color: var(--color-texto);
+  border: 2px solid var(--color-gris-claro);
+  color: var(--color-texto);
 }
 
 
 /* --- HORAS: OCUPA 1 COLUMNA --- */
 .timeslot-container-custom {
-    grid-column: span 1; /* ⬅️ CORRECCIÓN: 1/3 del ancho */
-    display: flex;
-    flex-direction: column;
+  grid-column: span 1;
+  /* ⬅️ CORRECCIÓN: 1/3 del ancho */
+  display: flex;
+  flex-direction: column;
 }
 
 .time-title-aesthetic {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-align: center;
-    color: var(--color-texto);
-    background-color: var(--color-gris-seleccion);
-    border-bottom: 2px solid var(--color-borde);
-    padding: 10px 0;
-    border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  color: var(--color-texto);
+  background-color: var(--color-gris-seleccion);
+  border-bottom: 2px solid var(--color-borde);
+  padding: 15px 0;
+  border-radius: 8px;
 }
 
 .time-slots {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
-    padding-right: 8px;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  /* Dos columnas de horas */
+  gap: 12px;
+  padding-right: 5px;
 }
 
 .time-slot {
-    background-color: #333;
-    color: var(--color-texto);
-    border: 1px solid #444;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
+  padding: 15px 5px;
+  background-color: #262626;
+  border: 1px solid #333;
+  font-size: 1.1rem;
+  /* Cambio: Texto de la hora en blanco */
+  color: #ffffff !important;
+  font-weight: 600;
 }
 
 .time-slot:hover:not(:disabled) {
-    background-color: #444;
-    border-color: var(--color-texto);
+  background-color: #444;
+  border-color: var(--color-texto);
 }
 
 .time-slot.selected {
-    background-color: var(--color-gris-seleccion);
-    color: var(--color-texto);
-    font-weight: 700;
-    border-color: var(--color-gris-seleccion);
-    box-shadow: none;
+  background-color: var(--color-morado-principal) !important;
+  /* Hora seleccionada morada */
+  border-color: var(--color-morado-principal);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 .time-slot.past-time,
 .time-slot:disabled {
-    background-color: #222;
-    color: #555;
-    border-color: #333;
-    cursor: not-allowed;
+  background-color: #222;
+  color: #555;
+  border-color: #333;
+  cursor: not-allowed;
 }
 
 /* Placeholder: OCUPA 2 COLUMNAS */
 .timeslot-container-custom.placeholder-only {
-    grid-column: span 2; /* ⬅️ CORRECCIÓN: Ocupa 2/3 del ancho (Horas + Form) */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  grid-column: span 2;
+  /* ⬅️ CORRECCIÓN: Ocupa 2/3 del ancho (Horas + Form) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .placeholder-text {
-    color: var(--color-texto-secundario);
-    font-style: italic;
-    font-size: 1.1rem;
-    text-align: center;
+  color: var(--color-texto-secundario);
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 
 /* --- FORMULARIO: OCUPA 1 COLUMNA Y MANTIENE ESTÉTICA MEJORADA --- */
 .booking-form {
-    grid-column: span 1; /* ⬅️ CORRECCIÓN: 1/3 del ancho */
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  grid-column: span 1;
+  /* ⬅️ CORRECCIÓN: 1/3 del ancho */
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
 }
 
 .form-title-aesthetic {
-    font-size: 1.6rem; /* Título más grande */
-    font-weight: 800; /* Más audaz */
-    margin-bottom: 15px; /* Más espacio */
-    color: var(--color-morado-principal);
-    text-align: center;
+  font-size: 2.2rem;
+  /* Título más grande */
+  font-weight: 800;
+  /* Más audaz */
+  margin-bottom: 15px;
+  /* Más espacio */
+  font-size: 2rem;
+  color: var(--color-morado-principal);
+  text-align: center;
 }
 
 .form-subtitle-aesthetic {
-    color: #d1d5db;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .form-group {
-    margin-bottom: 25px; /* Más separación entre campos */
+  margin-bottom: 25px;
+  /* Más separación entre campos */
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: var(--color-texto-secundario);
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--color-texto-secundario);
 }
 
 .form-input {
-    width: 100%;
-    padding: 14px; /* Un poco más alto */
-    background-color: #333;
-    border: 2px solid var(--color-borde); /* Borde más visible */
-    border-radius: 8px;
-    color: var(--color-texto);
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  padding: 18px;
+  /* Un poco más alto */
+  background-color: #333;
+  border: 2px solid var(--color-borde);
+  /* Borde más visible */
+  border-radius: 8px;
+  color: var(--color-texto);
+  font-size: 1.1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-input:focus {
-    outline: none;
-    border-color: var(--color-morado-principal);
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6); /* Sombra más fuerte y visible */
+  outline: none;
+  border-color: var(--color-morado-principal);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+  /* Sombra más fuerte y visible */
 }
 
 /* Botón de Enviar (Cambiado de Verde a Morado/Púrpura para Coherencia) */
 .submit-booking-btn {
-    width: 100%;
-    padding: 18px; /* Botón más alto */
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  width: 100%;
+  padding: 18px;
+  /* Botón más alto */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .submit-booking-btn-aesthetic {
-    /* Fondo: Morado principal, Borde: Morado, Sombra: Morada (Coherencia) */
-    background-color: var(--color-morado-principal); 
-    color: var(--color-texto);
-    border: 3px solid var(--color-morado-principal); 
-    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
+  /* Fondo: Morado principal, Borde: Morado, Sombra: Morada (Coherencia) */
+  background-color: var(--color-morado-principal);
+  color: var(--color-texto);
+  border: 3px solid var(--color-morado-principal);
+  box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
 }
 
 .submit-booking-btn-aesthetic:hover {
-    /* Hover: Un morado más oscuro */
-    background-color: #8B5CF6; 
-    opacity: 1;
-    transform: translateY(-2px);
+  /* Hover: Un morado más oscuro */
+  background-color: #8B5CF6;
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 /* ==========================================================
@@ -738,112 +799,140 @@ main {
 
 /* Estilo para cada tarjeta/módulo de servicio */
 .service-module {
-    background-color: var(--color-fondo-modulo);
-    border: 1px solid var(--color-borde-morado);
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s ease;
-    
-    /* VALORES DE PADDING DE BASE (MÓVIL/FALLBACK) */
-    padding: 50px 70px; 
+  background-color: var(--color-fondo-modulo);
+  border: 1px solid var(--color-borde-morado);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  margin-bottom: 3rem;
+  outline: 1px solid rgba(168, 85, 247, 0.15);
+  outline-offset: 12px;
+
+  /* VALORES DE PADDING DE BASE (MÓVIL/FALLBACK) */
+padding: 2.5rem 1.5rem !important; 
+  display: flex;
+  flex-direction: column;
+  width: 100% !important; /* Asegura que la caja respete el grid */
 }
 
 .service-module:hover {
-    box-shadow: 0 0 35px rgba(168, 85, 247, 0.4);
-    border-color: var(--color-morado-principal);
-    transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.4);
+  border-color: var(--color-morado-principal);
+  transform: translateY(-5px);
 }
 
 /* Título de la Categoría (H2) */
 .service-category-title {
-    color: var(--color-morado-principal);
-    font-weight: 800;
-    /* AUMENTO DE MARGEN INTERNO GARANTIZADO */
-    margin-bottom: 4rem !important; /* 64px de separación garantizados */
-    display: flex;
-    align-items: center;
+  color: var(--color-morado-principal);
+  font-weight: 800;
+  /* AUMENTO DE MARGEN INTERNO GARANTIZADO */
+  margin-bottom: 4rem !important;
+  /* 64px de separación garantizados */
+  display: flex;
+  align-items: center;
 }
 
 .service-category-title span {
-    margin-right: 1rem;
-    font-size: 1.8em;
+  margin-right: 1rem;
+  font-size: 1.8em;
 }
 
 /* Estilo para cada item de servicio (H3 + P) */
 .service-item {
-    border-left: 5px solid var(--color-morado-principal);
-    padding-left: 1.25rem;
+  border-left: 5px solid var(--color-morado-principal);
+  padding-left: 1.25rem;
 }
 
 /* Título del Servicio individual (H3) */
 .service-item h3 {
-    color: var(--color-texto);
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+  color: var(--color-texto);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 /* Descripción del Servicio (P) */
 .service-item p {
-    color: var(--color-texto-secundario);
-    font-size: 1rem;
-    line-height: 1.6;
+  color: var(--color-texto-secundario);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Asegurar que las negritas dentro del contenido se vean bien */
 .service-item p strong {
-    color: var(--color-morado-principal);
-    font-weight: 700;
+  color: var(--color-morado-principal);
+  font-weight: 700;
 }
 
 /* --- CALENDARIO: ESTILO DE FIN DE SEMANA (NUEVO) --- */
 .custom-calendar-day.weekend {
-    background-color: var(--color-gris-oscuro) !important; 
-    color: var(--color-gris-claro) !important; 
-    cursor: not-allowed;
-    opacity: 0.6; /* Un poco de opacidad para diferenciarlo */
+  background-color: var(--color-gris-oscuro) !important;
+  color: var(--color-gris-claro) !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+  /* Un poco de opacidad para diferenciarlo */
 }
 
 /* Regla crítica que se mantiene para días pasados y fines de semana (disabled) */
 .custom-calendar-day.past,
 .custom-calendar-day:disabled {
-    background-color: #222;
-    color: #555;
-    cursor: not-allowed;
+  background-color: #222;
+  color: #555;
+  cursor: not-allowed;
 }
 
 /* === REFUERZO DE LA GRILLA 2x2 PARA ESCRITORIO (CSS Puro) === */
-@media (min-width: 769px) {
-    .services-grid-container {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        /* Separación horizontal entre cajas */
-        column-gap: 60px !important; 
-    }
-    
-    /* REFUERZO DE PADDING Y ALTURA MÍNIMA PARA PERMITIR ESTIRAMIENTO SIN SCROLL */
-    .service-module {
-        /* PADDING EXTREMO para ensanchar la caja y forzar el aspecto ancho */
-        padding: 50px 120px !important; /* Vertical: 50px, Horizontal: 120px */
-        margin-left: 0;
-        margin-right: 0;
-        
-        /* Permitimos que la caja se estire para evitar el scroll */
-        min-height: 400px !important; /* Mínimo de 400px de altura */
-        aspect-ratio: auto !important; 
-        
-        /* Aseguramos que NO haya scrollbar forzado */
-        overflow-y: visible !important; 
-    }
+@media (max-width: 1200px) {
+  .scheduler-widget-custom {
+    grid-template-columns: 1fr 1fr;
+    /* Colapsa a 2 columnas en pantallas medianas */
+  }
 
-    /* APLICAMOS MARGEN INFERIOR A LA PRIMERA FILA (SEPARACIÓN VERTICAL) */
-    .services-grid-container .service-module:nth-child(1),
-    .services-grid-container .service-module:nth-child(2) {
-        margin-bottom: 90px !important;
-    }
+  .booking-form {
+    grid-column: span 2;
+  }
+}
 
-    .services-grid-container .service-module:nth-child(3),
-    .services-grid-container .service-module:nth-child(4) {
-        margin-bottom: 0 !important;
-    }
+@media (max-width: 768px) {
+  .scheduler-widget-custom {
+    grid-template-columns: 1fr !important;
+    /* Una sola columna en móvil */
+    padding: 20px;
+  }
+
+  .time-slots {
+    grid-template-columns: repeat(2, 1fr) !important;
+    /* Mantiene 2 columnas en móvil si hay espacio */
+  }
+
+  .custom-calendar-day {
+    height: 45px;
+    font-size: 1rem;
+  }
+}
+
+.service-module {
+  margin-bottom: 4rem !important;
+}
+
+@media (min-width: 1024px) {
+  .service-module {
+    margin-bottom: 6rem !important;
+  }
+}
+
+.relative.overflow-hidden img {
+  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+}
+
+.light-page {
+  background-color: #FFFFFF !important;
+  color: #2c2c2c !important;
+}
+
+.light-page p, .light-page h1, .light-page h2 {
+  color: #2c2c2c !important;
 }
