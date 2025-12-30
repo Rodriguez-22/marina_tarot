@@ -323,14 +323,20 @@ header.main-header {
     grid-row: auto !important;
   }
 
+  /* AJUSTE PARA LOS NOMBRES DE LA SEMANA EN MÓVIL */
+  .custom-calendar-weekdays {
+    display: none !important;
+  }
+
   /* Ajustar días del calendario para que quepan en pantallas pequeñas */
   .custom-calendar-day {
     height: auto !important;
-    aspect-ratio: 1 / 1 !important;
-    font-size: 1rem !important;
+    padding: 10px 0 !important;
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 4px !important;
   }
 
   .timeslot-container-custom {
@@ -596,10 +602,7 @@ main {
 }
 
 .custom-calendar-dates {
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr) !important;
-  /* Fechas en horizontal */
-  gap: 8px;
+  gap: 10px !important;
 }
 
 .custom-calendar-day {
@@ -881,6 +884,14 @@ main {
   cursor: not-allowed;
   opacity: 0.6;
   /* Un poco de opacidad para diferenciarlo */
+}
+
+.weekday-name-mobile {
+  display: block !important;
+    font-size: 0.65rem !important;
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-weight: 500;
 }
 
 /* Regla crítica que se mantiene para días pasados y fines de semana (disabled) */
