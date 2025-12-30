@@ -47,8 +47,13 @@ body {
   background-color: transparent;
   color: var(--color-texto);
   font-family: var(--font-body);
-  /* ⬅️ Usa la variable de cuerpo (Poppins) */
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-dark {
+  background-color: #0a0a0a;
+  color: #ffffff;
 }
 
 main:not(.bg-white) {
@@ -809,10 +814,11 @@ main {
   outline-offset: 12px;
 
   /* VALORES DE PADDING DE BASE (MÓVIL/FALLBACK) */
-padding: 2.5rem 1.5rem !important; 
+  padding: 2.5rem 1.5rem !important;
   display: flex;
   flex-direction: column;
-  width: 100% !important; /* Asegura que la caja respete el grid */
+  width: 100% !important;
+  /* Asegura que la caja respete el grid */
 }
 
 .service-module:hover {
@@ -933,6 +939,8 @@ padding: 2.5rem 1.5rem !important;
   color: #2c2c2c !important;
 }
 
-.light-page p, .light-page h1, .light-page h2 {
+.light-page p,
+.light-page h1,
+.light-page h2 {
   color: #2c2c2c !important;
 }
