@@ -300,37 +300,41 @@ header.main-header {
     font-size: 2.5rem;
   }
 
-  /* FUERZA UNA SOLA COLUMNA */
+  /* CORRECCIÓN CRÍTICA: APILADO VERTICAL EN MÓVIL */
   .scheduler-widget-custom {
-    display: grid;
-    /* Proporciones: Calendario más ancho, horas y formulario equilibrados */
-    grid-template-columns: 1.4fr 0.8fr 1fr;
-    gap: 30px;
-    padding: 40px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 20px 15px !important;
     background-color: #0f0f0f;
-    /* Fondo muy oscuro para resaltar el morado */
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     border: 1px solid var(--color-morado-principal);
-    /* Borde principal morado */
     text-align: left;
-    /* Sombra de caja morada intensa */
-    box-shadow: 0 0 60px rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
   }
 
-  /* FUERZA QUE CADA MÓDULO OCUPE ESA COLUMNA (Anulación de Span 2) */
+  /* Forzar que los módulos ocupen todo el ancho y no tengan altura fija */
   .custom-calendar-container,
   .timeslot-container-custom,
   .booking-form,
   .timeslot-container-custom.placeholder-only {
-    /* Placeholder incluido */
-    grid-column: 1 / -1 !important;
-    /* Ocupa el 100% del ancho */
-    /* Aseguramos que solo ocupen 1 fila si usas grid-row en el desktop */
+    width: 100% !important;
+    grid-column: auto !important;
     grid-row: auto !important;
   }
 
+  /* Ajustar días del calendario para que quepan en pantallas pequeñas */
+  .custom-calendar-day {
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    font-size: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   .timeslot-container-custom {
-    max-height: 300px;
+    max-height: none !important;
   }
 
   /* SOLUCIÓN PARA CAMPOS INTERNOS (si los tienes en fila) */
@@ -474,7 +478,7 @@ header.main-header {
   }
 }
 
-/* ================== SECCIÓN DE RESERVA (WIDGET) ================== */
+/* ================== SECCIÓN DE RESERVA (WIDGET - ESCRITORIO) ================== */
 main {
   display: block;
 }
