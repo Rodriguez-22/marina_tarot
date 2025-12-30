@@ -888,32 +888,34 @@ main {
 }
 
 /* === REFUERZO DE LA GRILLA 2x2 PARA ESCRITORIO (CSS Puro) === */
-@media (max-width: 1200px) {
-  .scheduler-widget-custom {
-    grid-template-columns: 1fr 1fr;
-    /* Colapsa a 2 columnas en pantallas medianas */
-  }
-
-  .booking-form {
-    grid-column: span 2;
-  }
-}
-
 @media (max-width: 768px) {
   .scheduler-widget-custom {
     grid-template-columns: 1fr !important;
-    /* Una sola columna en móvil */
-    padding: 20px;
+    padding: 15px; /* Bajamos un poco el padding para ganar espacio */
   }
 
+  /* Si la pantalla es menor a 480px (móviles verticales), mejor 1 sola columna de horas */
   .time-slots {
-    grid-template-columns: repeat(2, 1fr) !important;
-    /* Mantiene 2 columnas en móvil si hay espacio */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+    gap: 10px;
   }
 
   .custom-calendar-day {
-    height: 45px;
-    font-size: 1rem;
+    height: auto; /* Permitimos que crezca si es necesario */
+    min-height: 48px; /* Aseguramos que sea fácil de tocar */
+    aspect-ratio: 1 / 1; /* Mantiene los días cuadrados, se ve más limpio */
+    padding: 5px;
+  }
+}
+
+/* Ajuste extra para teléfonos muy pequeños */
+@media (max-width: 400px) {
+  .time-slots {
+    grid-template-columns: 1fr !important; /* Una sola columna para que el texto respire */
+  }
+  
+  .custom-calendar-day {
+    font-size: 0.9rem;
   }
 }
 
