@@ -888,55 +888,39 @@ main {
 }
 
 /* === REFUERZO DE LA GRILLA 2x2 PARA ESCRITORIO (CSS Puro) === */
-@media (max-width: 768px) {
-  /* 1. Asegurar que el contenedor principal crezca con el contenido */
-  .scheduler-widget-custom {
-    grid-template-columns: 1fr !important;
-    height: auto !important; /* Permite que el contenedor se alargue */
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-  }
+@media (min-width: 769px) {
+    .services-grid-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        /* Separación horizontal entre cajas */
+        column-gap: 60px !important; 
+    }
+    
+    /* REFUERZO DE PADDING Y ALTURA MÍNIMA PARA PERMITIR ESTIRAMIENTO SIN SCROLL */
+    .service-module {
+        /* PADDING EXTREMO para ensanchar la caja y forzar el aspecto ancho */
+        padding: 50px 120px !important; /* Vertical: 50px, Horizontal: 120px */
+        margin-left: 0;
+        margin-right: 0;
+        
+        /* Permitimos que la caja se estire para evitar el scroll */
+        min-height: 400px !important; /* Mínimo de 400px de altura */
+        aspect-ratio: auto !important; 
+        
+        /* Aseguramos que NO haya scrollbar forzado */
+        overflow-y: visible !important; 
+    }
 
-  /* 2. Arreglar los nombres de los días (Lun Mar Mié...) */
-  /* Asumiendo que están en un contenedor llamado .calendar-header o similar */
-  .calendar-weekdays-container, 
-  .custom-calendar-header-days { 
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Crea 7 columnas iguales */
-    text-align: center;
-    gap: 2px;
-    margin-bottom: 10px;
-  }
+    /* APLICAMOS MARGEN INFERIOR A LA PRIMERA FILA (SEPARACIÓN VERTICAL) */
+    .services-grid-container .service-module:nth-child(1),
+    .services-grid-container .service-module:nth-child(2) {
+        margin-bottom: 90px !important;
+    }
 
-  /* 3. Evitar que las horas se salgan del cuadro */
-  .booking-form {
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  .time-slots {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* Mantiene 2 columnas */
-    gap: 10px;
-    padding: 10px 0;
-  }
-
-  /* 4. Ajustar botones de hora para que no sean tan altos */
-  .time-slot-button { /* Cambia esto por la clase de tus botones de hora */
-    padding: 12px 5px !important;
-    font-size: 0.9rem;
-    height: auto !important;
-  }
-
-  /* 5. Días del calendario */
-  .custom-calendar-day {
-    height: 40px; /* Reducimos un poco para que quepan todos en pantalla */
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .services-grid-container .service-module:nth-child(3),
+    .services-grid-container .service-module:nth-child(4) {
+        margin-bottom: 0 !important;
+    }
 }
 
 /* Ajuste extra para teléfonos muy pequeños */
