@@ -331,12 +331,12 @@ header.main-header {
   /* Ajustar días del calendario para que quepan en pantallas pequeñas */
   .custom-calendar-day {
     height: auto !important;
-    padding: 10px 0 !important;
+    padding: 8px 0 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 4px !important;
+    gap: 2px !important;
   }
 
   .timeslot-container-custom {
@@ -602,7 +602,7 @@ main {
 }
 
 .custom-calendar-dates {
-  gap: 10px !important;
+  gap: 6px !important;
 }
 
 .custom-calendar-day {
@@ -888,9 +888,9 @@ main {
 
 .weekday-name-mobile {
   display: block !important;
-    font-size: 0.65rem !important;
+    font-size: 0.6rem !important; /* Tamaño pequeño para que no se amontone */
     text-transform: uppercase;
-    opacity: 0.8;
+    color: var(--color-texto-secundario);
     font-weight: 500;
 }
 

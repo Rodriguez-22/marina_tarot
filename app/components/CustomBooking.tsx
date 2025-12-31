@@ -155,8 +155,10 @@ const CustomCalendar = ({ selectedDate, onDateChange }: CustomCalendarProps) => 
                             disabled={isDisabled}
                             className={`${dayClass} ${date.getMonth() !== currentMonth.getMonth() ? 'opacity-30' : ''}`}
                         >
+                            {/* Contenedor flexible para apilar número y nombre del día */}
                             <div className="flex flex-col items-center justify-center leading-tight">
                                 <span className="text-base md:text-lg font-semibold">{date.getDate()}</span>
+                                {/* Esta clase se encarga de mostrar el nombre solo en móviles */}
                                 <span className="weekday-name-mobile">
                                     {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'][date.getDay()]}
                                 </span>
