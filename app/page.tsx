@@ -5,9 +5,9 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden font-serif">
       
-      {/* 1. FUENTES Y ANIMACIONES */}
+      {/* 1. FUENTES Y ANIMACIONES (Cinzel y Garamond) */}
       <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
       
       <style dangerouslySetInnerHTML={{ __html: `
@@ -27,82 +27,92 @@ export default function Home() {
         .animate-shimmer { animation: shimmer 3s infinite; }
       `}} />
 
-      {/* --- FONDO MÁGICO --- */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(88,28,135,0.25),_black_80%)]"></div>
-      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none animate-stars" 
+      {/* --- FONDO MÁGICO TOTAL --- */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(88,28,135,0.15),_black_70%)]"></div>
+      
+      {/* CAPA DE ESTRELLAS */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none animate-stars" 
            style={{ 
              backgroundImage: `
                radial-gradient(2px 2px at 20px 30px, #ffffff, transparent), 
                radial-gradient(1.5px 1.5px at 100px 150px, #ffffff, transparent),
-               radial-gradient(2px 2px at 200px 80px, #ffffff, transparent),
-               radial-gradient(1px 1px at 50px 200px, #ffffff, transparent)
+               radial-gradient(2px 2px at 200px 80px, #ffffff, transparent)
              `, 
              backgroundSize: '300px 300px' 
            }}>
       </div>
 
       {/* --- CONTENIDO PRINCIPAL --- */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16 flex flex-col items-center">
         
-        {/* LOGO Y TÍTULO: CENTRADO TOTAL SUPERIOR */}
-        <div className="flex flex-row justify-center items-center gap-6 md:gap-8 mb-24 md:mb-32">
+        {/* LOGO Y TÍTULO: Marina en Morado y Centrado */}
+        <div className="flex flex-row justify-center items-center gap-8 mb-28">
           <div className="drop-shadow-[0_0_25px_rgba(168,85,247,0.7)]">
-            <img src="/logo.png" alt="Logo Marina Tarot" className="w-20 h-20 md:w-40 md:h-40 object-contain" />
+            <img src="/logo.png" alt="Logo Marina Tarot" className="w-20 h-20 md:w-32 md:h-32 object-contain" />
           </div>
-          <h1 className="text-5xl md:text-9xl font-bold text-[#A855F7] tracking-tighter uppercase">
+          <h1 className="text-6xl md:text-9xl font-bold text-[#A855F7] tracking-tighter uppercase">
             Marina
           </h1>
         </div>
 
-        {/* --- SECCIÓN HERO CENTRADA --- */}
-        {/* Usamos max-w-4xl para que no se estire a los bordes y mx-auto para centrar el bloque entero */}
-        <div className="max-w-4xl mx-auto"> 
-          <section className="flex flex-row items-center justify-center w-full gap-10 md:gap-16"> 
+        {/* SECCIÓN HERO: CAJA DE NEÓN TOTALMENTE CENTRADA */}
+        <div className="w-full flex justify-center px-4">
+          <div className="w-full max-w-4xl p-[1px] rounded-[40px] bg-gradient-to-r from-purple-500/30 via-transparent to-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.15)]">
+            {/* Ajuste de padding (px-8 md:px-20) para separar la imagen del borde */}
+            <div className="bg-black/80 backdrop-blur-xl rounded-[39px] py-12 px-8 md:px-20">
+              
+              <section className="flex flex-row items-center justify-center w-full gap-12 md:gap-20"> 
 
-            {/* IMAGEN A LA IZQUIERDA (Pequeña y con espacio por fuera) */}
-            <div className="w-[30%] md:w-[25%] shrink-0">
-              <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-[0_0_40px_rgba(168,85,247,0.3)] border border-purple-500/40">
-                <img 
-                  src="/perfil.jpg" 
-                  alt="Perfil Marina" 
-                  className="w-full h-full object-cover brightness-105"
-                />
-              </div>
+                {/* IMAGEN A LA IZQUIERDA: Separada del margen */}
+                <div className="w-[35%] md:w-[25%] shrink-0">
+                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(168,85,247,0.4)] border border-purple-500/50">
+                    <img 
+                      src="/perfil.jpg" 
+                      alt="Perfil Marina" 
+                      className="object-cover w-full h-full brightness-110"
+                    />
+                  </div>
+                </div>
+
+                {/* TEXTO A LA DERECHA: Centrado verticalmente respecto a la imagen */}
+                <div className="flex-1 flex flex-col justify-center items-start text-left">
+                  <h2 className="text-2xl md:text-4xl font-bold mb-6 leading-tight text-white tracking-wide uppercase">
+                    Tu guía en la sanación espiritual y el autoconocimiento.
+                  </h2>
+                  <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed italic font-light">
+                    Descubre el poder de la guía ancestral. Ofrecemos lecturas de Tarot, 
+                    Registros Akáshicos y terapias de sanación.
+                  </p>
+
+                  {/* BOTÓN PREMIUM */}
+                  <div className="relative inline-block group">
+                    <span className="absolute inset-0 rounded-full bg-purple-600/70 blur-[50px] group-hover:bg-purple-400/60 transition-all duration-700 animate-pulse"></span>
+                    <a 
+                      href="/contacto" 
+                      className="relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-bold text-white rounded-full 
+                                 bg-gradient-to-r from-fuchsia-700 via-purple-600 to-indigo-800 
+                                 border border-white/40 shadow-[0_0_50px_rgba(192,38,211,0.6)] 
+                                 hover:scale-105 transition-all duration-500 ease-out 
+                                 uppercase tracking-[0.3em] text-[10px] md:text-xs"
+                    >
+                      <span className="relative z-10 flex items-center gap-3">
+                        Agenda tu Consulta Hoy 
+                        <span className="text-lg text-fuchsia-200 group-hover:rotate-180 transition-transform duration-700">✧</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+
+              </section>
             </div>
-
-            {/* TEXTO A LA DERECHA (Alineado con el centro de la imagen) */}
-            <div className="flex-1 flex flex-col justify-center items-start text-left">
-              <h2 className="text-xl md:text-4xl font-bold mb-4 leading-[1.2] text-white tracking-wide uppercase">
-                Tu guía en la sanación espiritual y el autoconocimiento.
-              </h2>
-              <p className="text-xs md:text-lg text-gray-300 mb-6 leading-relaxed italic">
-                Descubre el poder de la guía ancestral. Ofrecemos lecturas de Tarot, 
-                Registros Akáshicos y terapias de sanación energética para transformar 
-                tu presente y liberar tu potencial.
-              </p>
-
-              {/* BOTÓN PREMIUM MÁS PEQUEÑO Y CENTRADO */}
-              <div className="relative inline-block group">
-                <span className="absolute inset-0 rounded-full bg-purple-600/70 blur-[40px] group-hover:bg-purple-400/60 transition-all duration-700 animate-pulse"></span>
-                <a 
-                  href="/contacto" 
-                  className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-full 
-                             bg-gradient-to-r from-fuchsia-700 via-purple-600 to-indigo-800 
-                             border border-white/40 shadow-[0_0_50px_rgba(192,38,211,0.6)] 
-                             hover:shadow-[0_0_90px_rgba(192,38,211,1)] 
-                             hover:scale-105 transition-all duration-500 ease-out 
-                             uppercase tracking-[0.3em] text-[8px] md:text-[10px]"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Agenda tu Consulta Hoy 
-                    <span className="text-sm text-fuchsia-200 group-hover:rotate-180 transition-transform duration-700">✧</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </section>
+          </div>
         </div>
+
       </div>
+
+      {/* RESPLANDOR DE FONDO EXTRA */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-purple-900/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
+
     </div>
   );
 }
