@@ -85,9 +85,12 @@ export default function Home() {
             <div className="bg-black/80 backdrop-blur-xl rounded-3xl py-16 px-8 md:px-16">
               <section className="flex flex-col lg:flex-row items-center justify-between w-full gap-16">
                 
-                {/* CONTENEDOR DE IMAGEN (REDUCIDO A 1/4) */}
-                <div className="w-full lg:w-1/4 flex-shrink-0 animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
-                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden image-container animate-glow border border-purple-500/50">
+                {/* --- CONTENEDOR DE LA IMAGEN --- */}
+                <div
+                  className="w-full lg:w-1/5 flex-shrink-0 animate-slide-in-left"
+                  style={{ animationDelay: "0.2s" }}
+                >
+                  <div className="relative w-full max-w-[250px] mx-auto aspect-square rounded-2xl overflow-hidden image-container animate-glow border border-purple-500/50">
                     <img
                       src="/perfil.jpg"
                       alt="Perfil Marina"
@@ -97,18 +100,28 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* CONTENEDOR DE TEXTO (AHORA TIENE MÁS ESPACIO) */}
+                {/* --- CONTENEDOR DE TEXTO --- */}
                 <div
-                  className="flex-1 flex flex-col justify-center items-start text-left animate-slide-in-right"
+                  className="flex-1 flex flex-col justify-center items-start text-left animate-slide-in-right py-12 lg:py-20"
                   style={{ animationDelay: "0.3s" }}
                 >
-                  <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight text-white tracking-tight font-heading">
-                    Tu guía en la sanación espiritual y el autoconocimiento
+                  <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight text-white tracking-tight font-heading max-w-xl">
+                    Tu guía en la <br className="hidden md:block" /> 
+                    sanación espiritual y el <br className="hidden md:block" /> 
+                    autoconocimiento
                   </h2>
-                  <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed font-light font-body">
-                    Descubre el poder de la guía ancestral. Ofrecemos lecturas de Tarot, Registros Akáshicos y terapias
-                    de sanación personalizadas para tu crecimiento espiritual.
-                  </p>
+                  
+                  <div className="max-w-md space-y-4 mb-10">
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light font-body">
+                      Descubre el poder de la guía ancestral.
+                    </p>
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light font-body">
+                      Ofrecemos lecturas de Tarot, Registros Akáshicos y terapias personalizadas.
+                    </p>
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light font-body">
+                      Tu camino hacia el crecimiento espiritual comienza aquí.
+                    </p>
+                  </div>
 
                   <div className="relative inline-block group">
                     <span className="absolute inset-0 rounded-full bg-purple-600/70 blur-[40px] group-hover:bg-purple-400/80 transition-all duration-700 group-hover:scale-110"></span>

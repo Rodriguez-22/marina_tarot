@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: oklch(1 0 0);
@@ -144,5 +141,211 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+
+/* Optimized header styles - reduced sizes and heights */
+
+/* 1. CONTENEDOR PRINCIPAL: Distribución Flex en 3 partes */
+header.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background-color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-borde);
+  height: auto;
+  min-height: 70px;
+  position: relative;
+  gap: 20px;
+}
+
+/* 2. LOGO - Reduced significantly */
+.logo {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.logo-image {
+  height: 60px;
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+  transform: scale(1.05);
+}
+
+/* 3. CONTENEDOR RESPONSIVO */
+.nav-right-container {
+  display: contents;
+}
+
+/* 3a. NAVEGACIÓN (Centro) */
+.main-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.main-nav a {
+  color: var(--color-texto);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+  color: var(--color-morado-principal);
+  border-bottom-color: var(--color-morado-principal);
+}
+
+.main-nav a.active {
+  color: var(--color-texto);
+  font-weight: 600;
+  border-bottom-color: var(--color-morado-principal);
+}
+
+.main-nav a.active:hover {
+  color: var(--color-morado-principal);
+}
+
+/* 3b. GRUPO DERECHO (Íconos Sociales y CTA) */
+.header-right-group {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-shrink: 0;
+}
+
+/* Íconos Sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-icons a {
+  color: var(--color-texto);
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons a:hover {
+  color: var(--color-morado-principal);
+  transform: translateY(-3px);
+}
+
+/* Botón CTA */
+.cta-button {
+  background: linear-gradient(135deg, var(--color-morado-principal), #c084fc);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+}
+
+/* Botón de Hamburguesa */
+.hamburger-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-texto);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px;
+}
+
+.hamburger-menu-button:hover {
+  color: var(--color-morado-principal);
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .hamburger-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-right-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-fondo-modulo);
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+    gap: 20px;
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  .nav-right-container.menu-open {
+    display: flex;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .header-right-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .social-icons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  header.main-header {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .logo-image {
+    height: 50px;
   }
 }
