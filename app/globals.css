@@ -159,6 +159,7 @@ header.main-header {
   min-height: 70px;
   position: relative;
   gap: 20px;
+  z-index: 100;
 }
 
 /* 2. LOGO - Reduced significantly */
@@ -296,7 +297,7 @@ header.main-header {
 
   .nav-right-container {
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     right: 0;
     background-color: var(--color-fondo-modulo);
@@ -305,10 +306,11 @@ header.main-header {
     display: none;
     gap: 20px;
     border-bottom: 1px solid var(--color-borde);
+    z-index: 999;
   }
 
-  .nav-right-container.menu-open {
-    display: flex;
+    .nav-right-container.menu-open {
+    display: flex; /* Esto sobreescribirá el display: none y el display: contents */
   }
 
   .main-nav ul {

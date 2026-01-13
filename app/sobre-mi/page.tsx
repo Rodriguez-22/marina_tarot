@@ -21,7 +21,7 @@ export default function SobreMiPage() {
                     <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
                         <div className="relative w-full max-w-[500px] h-[450px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl shadow-purple-900/30 border border-purple-500/20">
                             <Image
-                                src="/tarot.jpg" 
+                                src="/mujer.jpg" 
                                 alt="Foto de Marina"
                                 fill 
                                 style={{ objectFit: "cover" }} 
