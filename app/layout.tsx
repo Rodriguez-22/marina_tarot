@@ -1,32 +1,55 @@
-// En rodriguez-22/nidea-marketing/nidea-marketing-90cd82629267443ecc736288e2894ed49fafc54d/app/layout.tsx
+import type React from "react"
+import type { Metadata } from "next"
+import { Playfair_Display, Lato } from "next/font/google"
+import "./globals.css"
+import Header from "./components/Header"
+import { main } from "framer-motion/client"
 
-import type { Metadata } from "next";
-import { Poppins, Playfair_Display } from "next/font/google"; // ⬅️ DEBE USAR POPPINS Y AÑADIMOS Playfair_Display
-import Header from "./components/Header"; 
-import "./globals.css";
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+})
 
-// ⬅️ DEFINICIÓN DE POPPINS (Cuerpo)
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700", "800"] }); 
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-lato",
+})
 
-// ⬅️ DEFINICIÓN DE PLAYFAIR DISPLAY (Títulos)
-const playfair = Playfair_Display({ subsets: ["latin"], weight: ["700", "900"], variable: '--font-playfair' }); 
-
-// ... (resto del metadata)
+export const metadata: Metadata = {
+  title: "Marina Tarot",
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-icon.png",
+  },
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    // Se añade la variable CSS de la fuente Serif al <html>
-    <html lang="es" className={playfair.variable}> 
-      <body className="bg-[#0a0a0a]"> {/* ⬅️ DEBE USAR poppins.className */}
+    <html lang="en" className={`${playfairDisplay.variable} ${lato.variable}`}>
+      <body className={`font-body antialiased`}>
         <Header /> 
         <main>
           {children}
         </main>
       </body>
     </html>
-  );
+  )
 }
