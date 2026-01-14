@@ -15,15 +15,37 @@ export default function Header() {
   }
 
   return (
-    <header className="main-header">
-      {/* 1. Logo (Izquierda) */}
-      <div className="logo">
-        <Link href="/" onClick={closeMenu}>
-          <img src="/logo.png" alt="MARINA TAROT Logo" className="logo-image" />
+    <header className="main-header" style={{ height: 'auto', minHeight: '80px' }}>
+      {/* 1. Logo + Nombre (Izquierda) */}
+      <div className="logo" style={{ display: 'flex', alignItems: 'center', padding: '10px 0' }}>
+        <Link href="/" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '15px', textDecoration: 'none' }}>
+          
+          {/* LOGO: Aumentado a 100px para que se note el cambio */}
+          <img 
+            src="/logo.png" 
+            alt="MARINA TAROT Logo" 
+            style={{ 
+              height: '100px', 
+              width: 'auto',
+              display: 'block',
+              filter: 'drop-shadow(0 0 10px rgba(168, 85, 247, 0.5))',
+              transition: 'transform 0.3s ease'
+            }} 
+            className="hover:scale-105"
+          />
+
+          <span style={{ 
+            fontSize: '2.5rem', 
+            fontWeight: 'bold', 
+            color: '#A855F7', 
+            textTransform: 'uppercase',
+            fontFamily: 'Playfair Display, serif'
+          }}>
+            Marina
+          </span>
         </Link>
       </div>
 
-      {/* 2. Botón de Hamburguesa */}
       <button
         className="hamburger-menu-button"
         onClick={toggleMenu}
@@ -33,46 +55,26 @@ export default function Header() {
         <span className="hamburger-icon">{isMenuOpen ? "✕" : "☰"}</span>
       </button>
 
-      {/* 3. Contenedor Responsivo para todo el contenido de la derecha */}
       <div className={`nav-right-container ${isMenuOpen ? "menu-open" : ""}`}>
-        {/* 3a. Navegación (Centro) */}
         <nav className="main-nav">
           <ul className="nav-list">
+            <li><Link href="/" onClick={closeMenu}>Inicio</Link></li>
+            <li><Link href="/sobre-mi" onClick={closeMenu}>Sobre mi</Link></li>
+            <li><Link href="/servicios" onClick={closeMenu}>Servicios</Link></li>
             <li>
-              <Link href="/" onClick={closeMenu}>
-                Inicio
-              </Link>
-            </li>
-            <li>
-              <Link href="/sobre-mi" onClick={closeMenu}>
-                Sobre mi
-              </Link>
-            </li>
-            <li>
-              <Link href="/servicios" onClick={closeMenu}>
-                Servicios
-              </Link>
-            </li>
-            <li>
-              <Link href="/contacto" className="active" onClick={closeMenu}>
+              {/* SOLUCIÓN: Eliminado className="active" para que no se quede fija la barra */}
+              <Link href="/contacto" onClick={closeMenu}>
                 Contacto
               </Link>
             </li>
           </ul>
         </nav>
 
-        {/* 3b. Íconos y CTA (Derecha) */}
         <div className="header-right-group">
           <div className="social-icons">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <i className="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <i className="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <i className="fa-brands fa-tiktok"></i>
-            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-tiktok"></i></a>
           </div>
 
           <Link href="/contacto" className="cta-button" onClick={closeMenu}>

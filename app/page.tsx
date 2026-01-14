@@ -64,14 +64,21 @@ export default function Home() {
 
       {/* --- CONTENIDO PRINCIPAL --- */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16 flex flex-col items-center">
+
+        {/* HEADER CON LOGO GRANDE */}
         <div
-          className="flex flex-row justify-center items-center gap-6 mb-24 animate-fade-in-up"
+          className="flex flex-col md:flex-row justify-center items-center gap-10 mb-24 animate-fade-in-up"
           style={{ animationDelay: "0.1s" }}
         >
-          <div className="drop-shadow-[0_0_25px_rgba(168,85,247,0.7)] animate-float">
-            <img src="/logo.png" alt="Logo Marina Tarot" className="w-12 h-12 md:w-16 md:h-16 object-contain" />
+          <div className="drop-shadow-[0_0_45px_rgba(168,85,247,0.9)] animate-float">
+            {/* Tamaño aumentado de w-40 a w-60 para un impacto visual mayor */}
+            <img
+              src="/logo.png"
+              alt="Logo Marina Tarot"
+              className="w-32 h-32 md:w-60 md:h-60 object-contain"
+            />
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#A855F7] tracking-wide uppercase font-heading">
+          <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-bold text-[#A855F7] tracking-tighter uppercase font-heading">
             Marina
           </h1>
         </div>
@@ -80,9 +87,10 @@ export default function Home() {
           <div className="w-full max-w-5xl p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/30 via-transparent to-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.15)]">
             <div className="bg-black/80 backdrop-blur-xl rounded-3xl py-16 px-8 md:px-16">
               <section className="flex flex-col lg:flex-row items-center justify-between w-full gap-16">
-                {/* --- CONTENEDOR DE LA IMAGEN --- */}
-                <div className="w-full lg:w-1/5 flex-shrink-0 animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
-                  <div className="relative w-full max-w-[250px] mx-auto aspect-square rounded-2xl overflow-hidden image-container animate-glow border border-purple-500/50">
+
+                {/* --- CONTENEDOR DE LA IMAGEN DE PERFIL --- */}
+                <div className="w-full lg:w-1/4 flex-shrink-0 animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
+                  <div className="relative w-full max-w-[280px] mx-auto aspect-square rounded-2xl overflow-hidden image-container animate-glow border border-purple-500/50">
                     <img
                       src="/perfil.jpg"
                       alt="Perfil Marina"
@@ -120,11 +128,11 @@ export default function Home() {
                     <a
                       href="/contacto"
                       className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-semibold text-white rounded-full 
-                                 bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-700 
-                                 border border-white/40 shadow-[0_0_40px_rgba(192,38,211,0.5)]
-                                 hover:scale-110 hover:shadow-[0_0_60px_rgba(192,38,211,0.8)] 
-                                 transition-all duration-500 ease-out 
-                                 uppercase tracking-wider text-sm font-body"
+                                   bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-700 
+                                   border border-white/40 shadow-[0_0_40px_rgba(192,38,211,0.5)]
+                                   hover:scale-110 hover:shadow-[0_0_60px_rgba(192,38,211,0.8)] 
+                                   transition-all duration-500 ease-out 
+                                   uppercase tracking-wider text-sm font-body"
                     >
                       <span className="relative z-10 flex items-center gap-3">
                         Agenda tu Consulta

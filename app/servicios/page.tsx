@@ -8,12 +8,14 @@ const servicesData = [
     items: [
       {
         title: "Tarot Adivinatorio",
-        image: "/images/tarot.jpg",
+        // Usando tu imagen local: public/tarot.jpg
+        image: "/tarot.jpg", 
         desc: "Ilumina tu pasado y vislumbra posibles futuros para tomar decisiones conscientes.",
       },
       {
         title: "Registros Akáshicos",
-        image: "/images/akashicos.jpg",
+        // Usando tu imagen local: public/registros.jpg
+        image: "/registros.jpg",
         desc: "Conecta con la biblioteca del alma para transformar patrones emocionales.",
       },
     ],
@@ -24,12 +26,14 @@ const servicesData = [
     items: [
       {
         title: "Trabajos de Corte",
-        image: "/images/corte.jpg",
+        // Imagen de velas y protección (Unsplash)
+        image: "https://images.unsplash.com/photo-1572916163351-460d37e28304?q=80&w=400",
         desc: "Neutralización de envidias y ataques espirituales negativos.",
       },
       {
         title: "Lazos Kármicos",
-        image: "/images/lazos.jpg",
+        // Imagen de hilos de energía o conexión mística
+        image: "https://images.unsplash.com/photo-1515940175183-6798529cb860?q=80&w=400",
         desc: "Libérate de vínculos energéticos del pasado que impiden tu avance.",
       },
     ],
@@ -40,12 +44,14 @@ const servicesData = [
     items: [
       {
         title: "Piedras Calientes",
-        image: "/images/piedras.jpg",
+        // Imagen de piedras volcánicas de sanación
+        image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=400",
         desc: "Relajación profunda con piedras volcánicas para liberar el estrés.",
       },
       {
         title: "Masaje Kobido",
-        image: "/images/kobido.jpg",
+        // Usando tu imagen local de sanación: public/sanacion.jpg
+        image: "/sanacion.jpg",
         desc: "Técnica facial japonesa para un lifting natural y energía vital.",
       },
     ],
@@ -57,12 +63,14 @@ export default function ServiciosPage() {
     <div
       className="relative min-h-screen text-white overflow-hidden pb-40"
       style={{
+        // Asegurando que usa tu fondo: public/hero-bg.jpg
         backgroundImage: "url(/hero-bg.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
       }}
     >
+      {/* ... resto del código (fuentes y estilos) se mantiene igual ... */}
       <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Lato:wght@300;400;700&display=swap"
         rel="stylesheet"
@@ -113,7 +121,6 @@ export default function ServiciosPage() {
       />
 
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
-
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(88,28,135,0.3),_transparent_70%)]"></div>
 
       <section className="relative z-10 max-w-5xl mx-auto pt-24 px-6">
@@ -167,10 +174,11 @@ export default function ServiciosPage() {
                     >
                       <div className="relative w-28 h-28 mb-6 rounded-full overflow-hidden border-2 border-purple-500/40 group-hover:border-purple-500/80 shadow-[0_0_30px_rgba(168,85,247,0.3)] group-hover:shadow-[0_0_50px_rgba(168,85,247,0.6)] transition-all duration-500 animate-glow">
                         <img
-                          src={item.image || "/placeholder.svg"}
+                          src={item.image}
                           alt={item.title}
                           className="w-full h-full object-cover brightness-75 group-hover:brightness-100 transition-all duration-700 service-image"
                           onError={(e) => {
+                            // Fallback a una bola de cristal si falla la carga
                             e.currentTarget.src =
                               "https://images.unsplash.com/photo-1514820402329-de527fdd2e6d?q=80&w=200"
                           }}
