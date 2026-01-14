@@ -2,7 +2,15 @@
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full bg-black text-white overflow-hidden font-sans">
+    <div
+      className="relative min-h-screen w-full text-white overflow-hidden font-sans"
+      style={{
+        backgroundImage: "url(/hero-bg.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
       {/* TIPOGRAFÍAS NUEVAS: Playfair Display + Lato */}
       <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Lato:wght@300;400;700&display=swap"
@@ -50,21 +58,9 @@ export default function Home() {
         }}
       />
 
-      {/* --- FONDO MÁGICO MEJORADO --- */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(88,28,135,0.2),_black_70%)]"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
 
-      {/* CAPA DE ESTRELLAS */}
-      <div
-        className="absolute inset-0 z-0 opacity-40 pointer-events-none animate-stars"
-        style={{
-          backgroundImage: `
-               radial-gradient(2px 2px at 20px 30px, #ffffff, transparent), 
-               radial-gradient(1.5px 1.5px at 100px 150px, #ffffff, transparent),
-               radial-gradient(2px 2px at 200px 80px, #ffffff, transparent)
-             `,
-          backgroundSize: "300px 300px",
-        }}
-      ></div>
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(88,28,135,0.3),_transparent_70%)]"></div>
 
       {/* --- CONTENIDO PRINCIPAL --- */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16 flex flex-col items-center">
@@ -84,12 +80,8 @@ export default function Home() {
           <div className="w-full max-w-5xl p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/30 via-transparent to-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.15)]">
             <div className="bg-black/80 backdrop-blur-xl rounded-3xl py-16 px-8 md:px-16">
               <section className="flex flex-col lg:flex-row items-center justify-between w-full gap-16">
-                
                 {/* --- CONTENEDOR DE LA IMAGEN --- */}
-                <div
-                  className="w-full lg:w-1/5 flex-shrink-0 animate-slide-in-left"
-                  style={{ animationDelay: "0.2s" }}
-                >
+                <div className="w-full lg:w-1/5 flex-shrink-0 animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
                   <div className="relative w-full max-w-[250px] mx-auto aspect-square rounded-2xl overflow-hidden image-container animate-glow border border-purple-500/50">
                     <img
                       src="/perfil.jpg"
@@ -106,11 +98,11 @@ export default function Home() {
                   style={{ animationDelay: "0.3s" }}
                 >
                   <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight text-white tracking-tight font-heading max-w-xl">
-                    Tu guía en la <br className="hidden md:block" /> 
-                    sanación espiritual y el <br className="hidden md:block" /> 
+                    Tu guía en la <br className="hidden md:block" />
+                    sanación espiritual y el <br className="hidden md:block" />
                     autoconocimiento
                   </h2>
-                  
+
                   <div className="max-w-md space-y-4 mb-10">
                     <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light font-body">
                       Descubre el poder de la guía ancestral.
@@ -148,9 +140,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* RESPLANDOR DE FONDO EXTRA */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-purple-900/15 blur-[150px] rounded-full pointer-events-none z-0"></div>
     </div>
   )
 }
