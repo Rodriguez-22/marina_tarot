@@ -15,33 +15,18 @@ export default function Header() {
   }
 
   return (
-    <header className="main-header" style={{ height: 'auto', minHeight: '80px' }}>
-      {/* 1. Logo + Nombre (Izquierda) */}
-      <div className="logo" style={{ display: 'flex', alignItems: 'center', padding: '10px 0' }}>
-        <Link href="/" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '15px', textDecoration: 'none' }}>
-          
-          {/* LOGO: Aumentado a 100px para que se note el cambio */}
+    <header className="main-header" style={{ height: 'auto' }}>
+      {/* 1. Logo + Nombre */}
+      <div className="logo">
+        <Link href="/" onClick={closeMenu} className="flex items-center gap-4">
           <img 
             src="/logo.png" 
             alt="MARINA TAROT Logo" 
-            style={{ 
-              height: '100px', 
-              width: 'auto',
-              display: 'block',
-              filter: 'drop-shadow(0 0 10px rgba(168, 85, 247, 0.5))',
-              transition: 'transform 0.3s ease'
-            }} 
-            className="hover:scale-105"
+            className="logo-image"
+            style={{ height: '80px', width: 'auto', display: 'block' }} // Forzamos el tamaño grande
           />
-
-          <span style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: 'bold', 
-            color: '#A855F7', 
-            textTransform: 'uppercase',
-            fontFamily: 'Playfair Display, serif'
-          }}>
-            Marina
+          {/* 'hidden' lo oculta en móvil, 'md:block' lo muestra en pantallas medianas/grandes */}
+          <span className="hidden md:block text-2xl md:text-4xl font-bold text-[#A855F7] uppercase font-heading tracking-widest">
           </span>
         </Link>
       </div>
@@ -62,7 +47,7 @@ export default function Header() {
             <li><Link href="/sobre-mi" onClick={closeMenu}>Sobre mi</Link></li>
             <li><Link href="/servicios" onClick={closeMenu}>Servicios</Link></li>
             <li>
-              {/* SOLUCIÓN: Eliminado className="active" para que no se quede fija la barra */}
+              {/* ELIMINADA la clase "active" para que la barra solo salga en hover */}
               <Link href="/contacto" onClick={closeMenu}>
                 Contacto
               </Link>
@@ -77,7 +62,8 @@ export default function Header() {
             <a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-tiktok"></i></a>
           </div>
 
-          <Link href="/contacto" className="cta-button" onClick={closeMenu}>
+          {/* 'hidden' quita el botón en el menú móvil, 'md:flex' lo activa en PC */}
+          <Link href="/contacto" className="cta-button hidden md:flex" onClick={closeMenu}>
             ¡¿HABLAMOS?!
           </Link>
         </div>
