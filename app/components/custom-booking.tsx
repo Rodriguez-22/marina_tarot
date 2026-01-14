@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Check } from "lucide-react"
 
 interface TimeSlot {
@@ -13,14 +13,14 @@ interface TimeSlot {
 const TIME_SLOTS: TimeSlot[] = [
   { id: "1", time: "09:00 AM", available: true },
   { id: "2", time: "10:00 AM", available: true },
-  { id: "3", time: "11:00 AM", available: false },
+  { id: "3", time: "11:00 AM", available: true },
   { id: "4", time: "12:00 PM", available: true },
   { id: "5", time: "01:00 PM", available: true },
-  { id: "6", time: "02:00 PM", available: false },
+  { id: "6", time: "02:00 PM", available: true },
   { id: "7", time: "03:00 PM", available: true },
   { id: "8", time: "04:00 PM", available: true },
   { id: "9", time: "05:00 PM", available: true },
-  { id: "10", time: "06:00 PM", available: false },
+  { id: "10", time: "06:00 PM", available: true },
 ]
 
 export default function CustomBooking() {
@@ -65,7 +65,6 @@ export default function CustomBooking() {
     const firstDay = getFirstDayOfMonth(currentMonth)
     const daysInMonth = getDaysInMonth(currentMonth)
 
-    // Previous month days
     const prevMonthDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
     const daysInPrevMonth = getDaysInMonth(prevMonthDate)
 
@@ -86,7 +85,6 @@ export default function CustomBooking() {
       })
     }
 
-    // Current month days
     for (let i = 1; i <= daysInMonth; i++) {
       const dayDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i)
       dayDate.setHours(0, 0, 0, 0)
@@ -103,7 +101,6 @@ export default function CustomBooking() {
       })
     }
 
-    // Next month days
     const nextMonthDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
     const remainingDays = 42 - daysArray.length
 
@@ -145,11 +142,16 @@ export default function CustomBooking() {
     }
   }
 
-  const handleDateClick = (dayObj: any) => {
+  const handleDateClick = (dayObj: {
+    day: number
+    month: number
+    year: number
+    currentMonth: boolean
+    isAvailable: boolean
+  }) => {
     if (dayObj.isAvailable && dayObj.currentMonth) {
       const newDate = new Date(dayObj.year, dayObj.month, dayObj.day)
       newDate.setHours(0, 0, 0, 0)
-      console.log("[v0] Date selected:", newDate, "Formatted:", newDate.toLocaleDateString("es-ES"))
       setSelectedDate(newDate)
       setSelectedTime(null)
     }
@@ -169,6 +171,24 @@ export default function CustomBooking() {
       opacity: 1,
       y: 0,
       transition: { duration: 0.3 },
+    },
+  }
+
+  const timeSlotsContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 },
+    },
+  }
+
+  const timeSlotItemVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 20 },
     },
   }
 
@@ -265,100 +285,126 @@ export default function CustomBooking() {
           variants={itemVariants}
           className="bg-white/10 backdrop-blur-lg border border-purple-500/30 rounded-2xl p-8 shadow-2xl hover:border-purple-500/60 transition-all duration-300 flex flex-col"
         >
-          {selectedDate ? (
-            <>
-              <div className="mb-6">
-                <h3 className="text-2xl font-heading font-bold text-white mb-2">Horarios disponibles</h3>
-                <p className="text-purple-300 text-base font-medium">
-                  {selectedDate.toLocaleDateString("es-ES", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
-
-              <motion.div className="grid grid-cols-2 gap-3 flex-1 min-h-80" variants={containerVariants}>
-                {TIME_SLOTS.map((slot) => {
-                  const isSelected = selectedTime === slot.id
-
-                  return (
-                    <motion.button
-                      key={slot.id}
-                      variants={itemVariants}
-                      whileHover={slot.available ? { scale: 1.05, y: -3 } : {}}
-                      whileTap={slot.available ? { scale: 0.98 } : {}}
-                      onClick={() => slot.available && handleSelectTime(slot.id)}
-                      disabled={!slot.available}
-                      className={`
-                        py-4 px-3 rounded-lg font-bold transition-all relative overflow-hidden group
-                        ${
-                          isSelected
-                            ? "bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg shadow-purple-500/50 border-2 border-purple-300"
-                            : slot.available
-                              ? "bg-white/15 text-white border-2 border-purple-400/50 hover:bg-white/25 hover:border-purple-300/80 hover:shadow-lg hover:shadow-purple-500/30"
-                              : "bg-gray-600/20 text-gray-400 border-2 border-gray-600/20 cursor-not-allowed opacity-50"
-                        }
-                      `}
-                    >
-                      {slot.available && (
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-white/20 to-purple-500/0"
-                          animate={{ x: ["-100%", "100%"] }}
-                          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                        />
-                      )}
-
-                      <div className="relative z-10 flex items-center justify-between gap-2">
-                        <span className="text-sm">{slot.time}</span>
-                        {isSelected && <Check size={18} className="animate-pulse" />}
-                      </div>
-                    </motion.button>
-                  )
-                })}
-              </motion.div>
-
+          <AnimatePresence mode="wait">
+            {selectedDate ? (
               <motion.div
-                className="mt-6 p-4 bg-gradient-to-r from-purple-500/30 via-purple-400/10 to-purple-500/30 border border-purple-400/50 rounded-lg"
-                animate={{
-                  borderColor: selectedTime
-                    ? ["rgba(168, 85, 247, 0.5)", "rgba(168, 85, 247, 0.8)", "rgba(168, 85, 247, 0.5)"]
-                    : "rgba(168, 85, 247, 0.3)",
-                }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                key="time-slots"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col h-full"
               >
-                {selectedTime ? (
-                  <p className="text-sm text-white text-center font-semibold">
-                    ✨ Sesión agendada:{" "}
-                    {selectedDate.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "2-digit" })} a
-                    las {TIME_SLOTS.find((s) => s.id === selectedTime)?.time}
+                <div className="mb-6">
+                  <h3 className="text-2xl font-heading font-bold text-white mb-2">Horarios disponibles</h3>
+                  <p className="text-purple-300 text-base font-medium">
+                    {selectedDate.toLocaleDateString("es-ES", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
                   </p>
-                ) : (
-                  <p className="text-sm text-purple-200 text-center">Selecciona una hora para reservar</p>
-                )}
-              </motion.div>
-            </>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="flex flex-col items-center justify-center h-full min-h-96"
-            >
-              <div className="text-center">
+                </div>
+
                 <motion.div
-                  className="text-5xl mb-4"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                  className="grid grid-cols-2 gap-3 flex-1"
+                  variants={timeSlotsContainerVariants}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  📅
+                  {TIME_SLOTS.map((slot, index) => {
+                    const isSelected = selectedTime === slot.id
+
+                    return (
+                      <motion.button
+                        key={slot.id}
+                        variants={timeSlotItemVariants}
+                        whileHover={slot.available ? { scale: 1.05, y: -3 } : {}}
+                        whileTap={slot.available ? { scale: 0.98 } : {}}
+                        onClick={() => slot.available && handleSelectTime(slot.id)}
+                        disabled={!slot.available}
+                        className={`
+                          py-4 px-3 rounded-xl font-bold transition-all relative overflow-hidden
+                          ${
+                            isSelected
+                              ? "bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg shadow-purple-500/50 border-2 border-purple-300"
+                              : slot.available
+                                ? "bg-white/15 text-white border-2 border-purple-400/50 hover:bg-white/25 hover:border-purple-300/80 hover:shadow-lg hover:shadow-purple-500/30"
+                                : "bg-gray-600/20 text-gray-500 border-2 border-gray-600/20 cursor-not-allowed line-through"
+                          }
+                        `}
+                      >
+                        {slot.available && !isSelected && (
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                            animate={{ x: ["-100%", "100%"] }}
+                            transition={{
+                              duration: 2,
+                              repeat: Number.POSITIVE_INFINITY,
+                              ease: "linear",
+                              delay: index * 0.1,
+                            }}
+                          />
+                        )}
+
+                        <div className="relative z-10 flex items-center justify-center gap-2">
+                          <span className="text-base">{slot.time}</span>
+                          {isSelected && (
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ type: "spring", stiffness: 500 }}
+                            >
+                              <Check size={18} />
+                            </motion.div>
+                          )}
+                        </div>
+                      </motion.button>
+                    )
+                  })}
                 </motion.div>
-                <p className="text-white text-lg font-semibold">Selecciona una fecha</p>
-                <p className="text-purple-300 text-sm mt-2">para ver los horarios disponibles</p>
-              </div>
-            </motion.div>
-          )}
+
+                <motion.div
+                  className="mt-6 p-4 bg-gradient-to-r from-purple-500/30 via-purple-400/10 to-purple-500/30 border border-purple-400/50 rounded-lg"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {selectedTime ? (
+                    <p className="text-sm text-white text-center font-semibold">
+                      Sesion agendada:{" "}
+                      {selectedDate.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "2-digit" })} a
+                      las {TIME_SLOTS.find((s) => s.id === selectedTime)?.time}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-purple-200 text-center">Selecciona una hora para reservar</p>
+                  )}
+                </motion.div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="placeholder"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center justify-center h-full min-h-96"
+              >
+                <div className="text-center">
+                  <motion.div
+                    className="text-6xl mb-4"
+                    animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                  >
+                    📅
+                  </motion.div>
+                  <p className="text-white text-lg font-semibold">Selecciona una fecha</p>
+                  <p className="text-purple-300 text-sm mt-2">para ver los horarios disponibles</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </motion.div>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { motion, easeInOut } from "framer-motion"
 import CustomBooking from "../components/custom-booking"
+import CustomCalendar from "../components/CustomCalendar"
 
 export default function ContactoClient() {
   const [isLoaded, setIsLoaded] = useState(false)
