@@ -55,24 +55,32 @@ export default function CustomBooking() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const sendWhatsApp = () => {
-    const slot = TIME_SLOTS.find(s => s.id === selectedTime)
-    const dateStr = selectedDate?.toLocaleDateString("es-ES", { 
-      day: "numeric", 
-      month: "long", 
-      year: "numeric" 
-    })
+  const sendWhatsApp = async () => {
+  const slot = TIME_SLOTS.find(s => s.id === selectedTime);
+  const dateStr = selectedDate?.toLocaleDateString("es-ES", { 
+    day: "numeric", month: "long", year: "numeric" 
+  });
 
-    const message = `¡Hola Marina! Me gustaría reservar una sesión:
-*Nombre:* ${formData.nombre} ${formData.apellidos}
-*Asunto:* ${formData.asunto}
-*Fecha:* ${dateStr}
-*Hora:* ${slot?.time}`
-
-    const encodedMessage = encodeURIComponent(message)
-    // Recuerda cambiar el número 34607929902 por el tuyo real
-    window.open(`https://wa.me/34607929902?text=${encodedMessage}`, "_blank")
+  // NUEVO: Guardar en Base de Datos
+  try {
+    await fetch('/api/citas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...formData,
+        fecha: dateStr,
+        hora: slot?.time
+      })
+    });
+  } catch (err) {
+    console.error("Error guardando en BD", err);
   }
+
+  // Lógica original de WhatsApp
+  const message = `¡Hola Marina! Me gustaría reservar una sesión...`;
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/34607929902?text=${encodedMessage}`, "_blank");
+}
 
   // --- Lógica de Calendario ---
   const getDaysInMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
