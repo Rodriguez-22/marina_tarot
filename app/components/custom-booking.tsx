@@ -78,7 +78,11 @@ export default function CustomBooking() {
   }
 
   // Lógica original de WhatsApp
-  const message = `¡Hola Marina! Me gustaría reservar una sesión...`;
+      const message = `¡Hola Marina! Me gustaría reservar una sesión:
+  *Nombre:* ${formData.nombre} ${formData.apellidos}
+  *Asunto:* ${formData.asunto}
+  *Fecha:* ${dateStr}
+  *Hora:* ${slot?.time}`;
   const encodedMessage = encodeURIComponent(message);
   window.open(`https://wa.me/34606340486?text=${encodedMessage}`, "_blank");
 }

@@ -1,11 +1,26 @@
-import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { NextRequest, NextResponse } from 'next/server'
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
-export async function POST(request: Request) {
+// ESTO ES PARA QUE EL ADMIN VEA LAS CITAS (LO QUE YA TENÍAS)
+export async function GET() {
   try {
-    const body = await request.json();
+    const citas = await prisma.cita.findMany({
+      orderBy: { id: 'desc' },
+    })
+    return NextResponse.json(citas)
+  } catch (error) {
+    return NextResponse.json({ error: "Error al obtener citas" }, { status: 500 })
+  }
+}
+
+// ESTO ES LO QUE FALTA O ESTÁ MAL: PARA GUARDAR DESDE EL FORMULARIO
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    console.log("Datos recibidos en el POST:", body)
+
     const nuevaCita = await prisma.cita.create({
       data: {
         nombre: body.nombre,
@@ -14,10 +29,11 @@ export async function POST(request: Request) {
         fecha: body.fecha,
         hora: body.hora,
       },
-    });
-    return NextResponse.json(nuevaCita, { status: 201 });
+    })
+
+    return NextResponse.json(nuevaCita, { status: 201 })
   } catch (error) {
-    console.error("Error en API:", error);
-    return NextResponse.json({ error: "Error al guardar" }, { status: 500 });
+    console.error("Error al guardar la cita:", error)
+    return NextResponse.json({ error: "No se pudo guardar la cita" }, { status: 500 })
   }
 }
