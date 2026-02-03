@@ -61,19 +61,20 @@ export default function CustomBooking() {
     day: "numeric", month: "long", year: "numeric" 
   });
 
-  // NUEVO: Guardar en Base de Datos
   try {
     await fetch('/api/citas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        ...formData,
-        fecha: dateStr,
-        hora: slot?.time
+        nombre: formData.nombre,
+        apellidos: formData.apellidos,
+        asunto: formData.asunto,
+        fecha: selectedDate?.toLocaleDateString("es-ES"),
+        hora: TIME_SLOTS.find(s => s.id === selectedTime)?.time
       })
     });
   } catch (err) {
-    console.error("Error guardando en BD", err);
+    console.error("No se pudo guardar en la base de datos, pero enviando WhatsApp...");
   }
 
   // Lógica original de WhatsApp

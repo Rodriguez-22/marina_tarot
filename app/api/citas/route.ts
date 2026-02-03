@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json(nuevaCita, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: "Error al guardar la cita" }, { status: 500 });
+    console.error("Error en API:", error);
+    return NextResponse.json({ error: "Error al guardar" }, { status: 500 });
   }
 }
