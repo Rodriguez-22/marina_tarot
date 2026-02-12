@@ -1,6 +1,7 @@
 // app/api/admin/citas/route.ts
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+export const dynamic = 'force-static';
 
 const prisma = new PrismaClient();
 
